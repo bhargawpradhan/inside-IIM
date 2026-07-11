@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: aeon-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node server/index.js
+    envVars:
+      - key: PORT
+        value: 8787
