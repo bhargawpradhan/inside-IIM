@@ -34,7 +34,7 @@ import {
 } from "lucide-react";
 import "./styles.css";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8787";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || (import.meta.env.DEV ? "http://localhost:8787" : window.location.origin);
 const examples = [
   "Reliance", "TCS", "HDFC Bank", "Infosys", "ICICI Bank", 
   "Tata Motors", "SBI", "Bharti Airtel", "L&T", "ITC",

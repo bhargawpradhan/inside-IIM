@@ -40,17 +40,14 @@ app.post("/api/research", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Investment research API running on http://localhost:${port}`);
+// Serve static client assets
+app.use(express.static(distPath));
+
+// Fallback for single-page applications
+app.get("*", (_req, res) => {
+  res.sendFile(path.join(distPath, "index.html"));
 });
 
-if (frontendPort !== port) {
-  const frontendApp = express();
-  frontendApp.use(express.static(distPath));
-  frontendApp.get(/.*/, (_req, res) => {
-    res.sendFile(path.join(distPath, "index.html"));
-  });
-  frontendApp.listen(frontendPort, () => {
-    console.log(`Investment research UI running on http://localhost:${frontendPort}`);
-  });
-}
+app.listen(port, () => {
+  console.log(`Investment research server running on port ${port}`);
+});

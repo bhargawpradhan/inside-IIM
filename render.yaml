@@ -1,9 +1,7 @@
 services:
   - type: web
-    name: aeon-backend
+    name: inside-iim-app
     env: node
-    buildCommand: npm install
+    buildCommand: npm install && npm run build
     startCommand: node server/index.js
-    envVars:
-      - key: PORT
-        value: 8787
+
